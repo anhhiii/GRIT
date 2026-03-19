@@ -11,24 +11,27 @@ st.set_page_config(
 )
 
 show_header()
-show_navbar()
+show_navbar(active_page="book_list")
+
+from utils.css import load_css
+
+# CSS Bổ Sung cho trang chi tiết
+load_css("assets/css/book_detail.css")
 
 # ========================
 # LẤY ID SÁCH
 # ========================
-
 book_id = st.session_state.get("selected_book_id", None)
 
 if book_id is None:
     st.warning("⚠️ Bạn chưa chọn cuốn sách nào.")
-    if st.button("⬅ Quay lại tủ sách"):
+    if st.button("← Quay lại tủ sách"):
         st.switch_page("pages/book_list.py")
     st.stop()
 
 # ========================
 # LẤY DỮ LIỆU
 # ========================
-
 book = BookService.get_book_details(book_id)
 
 if book is None:
@@ -39,39 +42,35 @@ if book is None:
 # HIỂN THỊ CHI TIẾT
 # ========================
 
-col_img, col_info = st.columns([1, 2], gap="large")
+st.markdown('<div class="book-detail-container">', unsafe_allow_html=True)
+
+col_img, col_info = st.columns([1, 2.5], gap="large")
 
 with col_img:
-
-    if book["img_url"]:
-        st.image(book["img_url"], use_container_width=True)
-    else:
-        st.image(
-            "https://via.placeholder.com/300x450?text=No+Image",
-            use_container_width=True
-        )
+    img_url = book["img_url"] if book["img_url"] else "https://via.placeholder.com/400x600?text=No+Cover"
+    st.markdown(f"""
+    <div class="book-cover-wrapper">
+        <img src="{img_url}" alt="{book['title']}">
+    </div>
+    """, unsafe_allow_html=True)
 
 with col_info:
+    st.markdown(f'<div class="bd-title">{book["title"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="bd-author">Viết bởi: {book["author"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="bd-meta">📚 ISBN: <strong>{book["isbn"]}</strong></div>', unsafe_allow_html=True)
+    
+    st.markdown('<hr style="margin: 1.5rem 0;">', unsafe_allow_html=True)
+    
+    st.markdown('<div class="bd-desc-title">Nội Dung Tóm Tắt</div>', unsafe_allow_html=True)
+    description = book["description"] if book["description"] else "Chưa có mô tả chi tiết cho cuốn sách này."
+    st.markdown(f'<div class="bd-desc-text">{description}</div>', unsafe_allow_html=True)
 
-    st.markdown(f"## {book['title']}")
+st.markdown('</div>', unsafe_allow_html=True)
 
-    st.markdown(
-        f"""
-**✍️ Tác giả:** {book['author']}  
-
-**📖 ISBN:** {book['isbn']}
-"""
-    )
-
-    st.divider()
-
-    st.markdown("### 📝 Mô tả nội dung")
-
-    description = book["description"] if book["description"] else "Chưa có mô tả."
-
-    st.write(description)
-
-    st.divider()
-
-    if st.button("⬅ Quay lại tủ sách"):
+col_btn = st.columns([1, 4])[0]
+with col_btn:
+    if st.button("← Quay lại Tủ sách", use_container_width=True):
         st.switch_page("pages/book_list.py")
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("<div style='text-align:center; color:#a39991; font-family:\"Inter\", sans-serif; font-size:14px'>© 2026 Hiên Chữ Library. Built for serious readers.</div>", unsafe_allow_html=True)

@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+/* Main app background */
+.stApp {
+    background-color: #fbf9f6;
+}
+
+/* Reduce Streamlit's huge default top padding */
+div[data-testid="stAppViewBlockContainer"], .block-container {
+    padding-top: 0.5rem !important;
+    margin-top: 0 !important;
+}
+
+div[data-testid="stSidebar"] {
+    background-color: #f4efeb;
+}
+
+/* Base button hover reset and general components globally used */
+hr {
+    border-top: 1px solid rgba(136, 115, 96, 0.15) !important;
+}

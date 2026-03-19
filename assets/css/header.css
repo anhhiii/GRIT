@@ -1,0 +1,55 @@
+[data-testid="stSidebar"] {display:none;}
+header {visibility:hidden;}
+
+/* Sticky Header Wrapper logic will be applied globally, but we reduce padding here */
+div[data-testid="stVerticalBlock"]:has(#header-container-anchor) {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #fbf9f6;
+    padding-top: 0;
+    padding-bottom: 0.5rem;
+    margin-top: -2rem;
+    border-bottom: 1px solid rgba(136, 115, 96, 0.15);
+}
+
+.brand-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.site-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1818;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+.site-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #8c8279;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* Search Bar Customization */
+div[data-testid="stTextInput"] input {
+    border-radius: 20px !important;
+    border: 1px solid #e2dcd5 !important;
+    padding: 0.5rem 1rem !important;
+    background-color: #ffffff !important;
+    font-family: 'Inter', sans-serif !important;
+    box-shadow: 0 2px 8px rgba(136, 115, 96, 0.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+div[data-testid="stTextInput"] input:focus {
+    border-color: #d1876e !important;
+    box-shadow: 0 4px 12px rgba(209, 135, 110, 0.15) !important;
+}

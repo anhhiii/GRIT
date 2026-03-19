@@ -4,3 +4,5 @@ numpy
 sqlalchemy
 scikit-learn
 nltk
+python-dotenv
+google-generativeai

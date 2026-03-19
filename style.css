@@ -1,147 +1,163 @@
-/* ===== GLOBAL ===== */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
 
-html, body, [class*="css"] {
-    font-family: "Inter", sans-serif;
-    background: #f7f8fa;
+/* Base application styling */
+html,
+body,
+[class*="css"] {
+    font-family: 'Nunito', sans-serif;
+    color: #4c4643;
 }
 
-div.stButton > button{
-    width:140px;
-    border-radius:8px;
+.stApp {
+    background-color: #fdfaf6;
+    /* Light, warm, paper-like background */
 }
 
-/* container */
-.block-container{
-    padding-top:2rem;
-    padding-bottom:2rem;
-    max-width:1200px;
+/* Typography styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.site-title,
+.book-detail-title {
+    font-family: 'Lora', serif;
+    color: #2b2826;
 }
 
-/* ===== HEADER ===== */
-
-header{
-    position:sticky;
-    top:0;
-    background:#f7f8fa;
-    z-index:999;
+/* Block Container - main body padding */
+.block-container {
+    padding-top: 2.5rem !important;
+    padding-bottom: 4rem !important;
+    max-width: 1200px;
 }
 
-.header-container{
-    position:sticky;
-    top:0;
-    background:#f7f8fa;
-    z-index:1000;
+/* Header hide default */
+header {
+    visibility: hidden;
 }
 
-.logo-box{
-    display:flex;
-    align-items:center;
-    gap:15px;
-
+/* Custom Header */
+.site-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 0px;
+    color: #3b3734;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
 }
 
-.logo-box img{
-    height:90px;
-    width:auto;
+.site-subtitle {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    color: #8c8279;
+    font-weight: 400;
+    margin-top: 2px;
+    letter-spacing: 0.5px;
 }
 
-.site-title{
-    font-family:"Merriweather", serif;
-    font-size:36px;
-    font-weight:700;
+/* General Buttons */
+div.stButton>button {
+    background-color: #ffffff;
+    color: #5c534d;
+    border: 1px solid #e1dbd6;
+    border-radius: 12px;
+    padding: 0.4rem 1.2rem;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    width: 100%;
 }
 
-.site-subtitle{
-    font-size:14px;
-    color:#6b7280;
+div.stButton>button:hover {
+    background-color: #f9f5f0;
+    border-color: #d1876e;
+    color: #d1876e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(209, 135, 110, 0.15);
 }
 
-/* ===== NAVBAR ===== */
-
-.navbar{
-    display:flex;
-    gap:50px;
-    padding:12px 0;
-    border-bottom:1px solid #e5e7eb;
-    margin-bottom:25px;
-    flex-wrap:nowrap;
+div.stButton>button:active {
+    transform: translateY(0);
 }
 
-.nav-item{
-    font-weight:500;
-    color:#374151;
-    text-decoration:none;
-    white-space:nowrap;
+/* Custom Buttons - Primary logic using CSS selection
+   To distinguish "primary" actions if needed */
+div.stButton>button[kind="primary"] {
+    background-color: #d1876e;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(209, 135, 110, 0.3);
 }
 
-.nav-item:hover{
-    color:#2563eb;
+div.stButton>button[kind="primary"]:hover {
+    background-color: #b97058;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(209, 135, 110, 0.4);
 }
 
-/* ===== BOOK CARD ===== */
-
-.book-card{
-    background:white;
-    border-radius:12px;
-    padding:14px;
-    border:1px solid #e5e7eb;
-    transition:0.2s;
-    height:100%;
+/* Containers for Book Cards */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background-color: #ffffff !important;
+    border: 1px solid #f0eae4 !important;
+    border-radius: 16px !important;
+    padding: 0.5rem !important;
+    box-shadow: 0 4px 16px rgba(43, 40, 38, 0.04) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-
-.book-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 6px 16px rgba(0,0,0,0.08);
+[data-testid="stVerticalBlockBorderWrapper"]:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 12px 24px rgba(43, 40, 38, 0.08) !important;
 }
 
-.book-title{
-    font-size:18px;
-    font-weight:600;
-    color:#111827;
+/* Search Box & Inputs */
+.stTextInput>div>div>input {
+    border-radius: 24px !important;
+    background-color: #ffffff !important;
+    border: 1px solid #e6e0da !important;
+    padding: 12px 20px !important;
+    font-size: 15px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    font-family: 'Nunito', sans-serif;
 }
 
-.book-author{
-    font-size:14px;
-    color:#6b7280;
+.stTextInput>div>div>input:focus {
+    border-color: #d1876e !important;
+    box-shadow: 0 0 0 2px rgba(209, 135, 110, 0.2) !important;
 }
 
-.book-btn{
-    margin-top:10px;
-    width:100%;
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:8px;
-    border-radius:6px;
+/* Select Box */
+div[data-baseweb="select"]>div {
+    border-radius: 12px;
+    border-color: #e6e0da;
+    background-color: #ffffff;
+    font-family: 'Nunito', sans-serif;
 }
 
-.book-btn:hover{
-    background:#1d4ed8;
+/* Sidebar styling */
+[data-testid="stSidebar"] {
+    background-color: #f2ebe3;
+    border-right: 1px solid #e6e0da;
 }
 
-/* ===== SEARCH ===== */
-
-.search-box{
-    width:100%;
+/* Divider Customization */
+hr {
+    border-top: 1px solid #e6e0da !important;
+    margin: 2.5rem 0 !important;
 }
 
-.search-box input{
-    width:100% !important;
-    border-radius:12px !important;
-    padding:10px 14px !important;
-    border:1px solid #e5e7eb !important;
+/* Hide default bottom footer */
+footer {
+    visibility: hidden;
 }
 
-/* ===== BOOK DETAIL ===== */
-
-.book-detail-title{
-    font-size:28px;
-    font-weight:700;
-}
-
-.book-description{
-    line-height:1.6;
-    color:#374151;
+/* Custom Text elements */
+.soft-text {
+    color: #8c8279;
+    font-size: 14px;
 }

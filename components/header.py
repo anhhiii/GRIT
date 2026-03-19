@@ -1,37 +1,38 @@
 import streamlit as st
-
-
-def load_css():
-    with open("style.css") as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+import streamlit.components.v1 as components
+from utils.css import load_css
 
 
 def show_header():
+    load_css("assets/css/global.css")
+    load_css("assets/css/header.css")
+    load_css("assets/css/book_card.css")
 
-    load_css()
+    with st.container():
+        st.markdown('<div id="header-container-anchor"></div>', unsafe_allow_html=True)
+        col1, col2, col3 = st.columns([1, 4, 3], gap="large")
 
-    st.markdown("""
-    <style>
-    [data-testid="stSidebar"] {display:none;}
-    header {visibility:hidden;}
-    </style>
-    """, unsafe_allow_html=True)
+        with col1:
+            # Fallback if logo doesn't exist
+            try:
+                st.image("assets/logo.png", width=100)
+            except Exception:
+                st.markdown("<div style='font-size:50px; text-align:center;'>🏛️</div>", unsafe_allow_html=True)
 
-    col1, col2, col3 = st.columns([1.2, 3, 2])
+        with col2:
+            st.markdown(f"""
+            <div style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
+                <div class="site-title">Hiên Chữ</div>
+                <div class="site-subtitle">Thư Viện Sách Điện Tử</div>
+            </div>
+            """, unsafe_allow_html=True)
 
-    with col1:
-        st.image("assets/logo.png", width=120)
-
-    with col2:
-        st.markdown("""
-        <div class="site-title">Hiên Chữ</div>
-        <div class="site-subtitle">Thư viện sách điện tử</div>
-        """, unsafe_allow_html=True)
-
-    with col3:
-        search = st.text_input(
-            "🔎 Tìm kiếm theo tên sách hoặc tác giả",
-            placeholder="Ví dụ: Dế mèn phiêu lưu ký..."
-        )
+        with col3:
+            st.markdown("<div style='margin-top: 15px;'></div>", unsafe_allow_html=True)
+            search = st.text_input(
+                "Tìm kiếm",
+                placeholder="🔎 Tìm sách, tác giả...",
+                label_visibility="collapsed"
+            )
 
     return search

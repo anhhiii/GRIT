@@ -8,7 +8,7 @@ from components.book_card import display_book_card
 st.set_page_config(page_title="Hiên Chữ - Home", layout="wide", initial_sidebar_state="collapsed")
 
 show_header()
-show_navbar()
+show_navbar(active_page="home")
 
 st.subheader("📚 Sách mới cập nhật")
 

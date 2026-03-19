@@ -1,0 +1,48 @@
+/* Styling for the sticky navbar container area */
+div[data-testid="stVerticalBlock"]:has(#navbar-container-anchor) {
+    position: sticky;
+    top: 60px; /* Sits below the sticky header */
+    z-index: 998;
+    background-color: #fbf9f6;
+    padding-top: 10px;
+}
+
+/* Override primary button for active nav tab */
+div[data-testid="stVerticalBlock"]:has(#navbar-container-anchor) div[data-testid="stButton"] button[kind="primary"] {
+    background-color: #d1876e !important;
+    color: #ffffff !important;
+    border-radius: 12px !important;
+    padding: 0.3rem 1.2rem !important;
+    border: none !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 4px 10px rgba(209, 135, 110, 0.2) !important;
+    min-height: 0 !important;
+}
+
+/* Override secondary button for inactive nav tab */
+div[data-testid="stVerticalBlock"]:has(#navbar-container-anchor) div[data-testid="stButton"] button[kind="secondary"] {
+    background-color: transparent !important;
+    color: #5c534d !important;
+    border-radius: 12px !important;
+    padding: 0.3rem 1.2rem !important;
+    border: 1px solid transparent !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+    box-shadow: none !important;
+    min-height: 0 !important;
+}
+
+div[data-testid="stVerticalBlock"]:has(#navbar-container-anchor) div[data-testid="stButton"] button[kind="secondary"]:hover {
+    background-color: rgba(209, 135, 110, 0.08) !important;
+    color: #d1876e !important;
+    border: 1px solid transparent !important;
+}
+
+div[data-testid="stVerticalBlock"]:has(#navbar-container-anchor) hr {
+    margin-top: 0.2rem !important;
+    margin-bottom: 1rem !important;
+    border-top: 1px solid rgba(136, 115, 96, 0.15) !important;
+}
